@@ -13,6 +13,7 @@ import CertificationsAdmin from './pages/admin/CertificationsAdmin';
 import ContactAdmin from './pages/admin/ContactAdmin';
 import EducationAdmin from './pages/admin/EducationAdmin';
 import ResearchAdmin from './pages/admin/ResearchAdmin';
+import ExperienceAdmin from './pages/admin/ExperienceAdmin';
 
 const App = () => {
   return (
@@ -37,6 +38,7 @@ const App = () => {
                 <Route path="certifications" element={<CertificationsAdmin />} />
                 <Route path="education" element={<EducationAdmin />} />
                 <Route path="research" element={<ResearchAdmin />} />
+                <Route path="experience" element={<ExperienceAdmin />} />
                 <Route path="contact" element={<ContactAdmin />} />
               </Route>
             </Routes>

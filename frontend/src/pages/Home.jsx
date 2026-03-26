@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { AnimatePresence } from 'framer-motion';
 import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
 import About from '../components/About';
@@ -11,10 +12,27 @@ import Contact from '../components/Contact';
 import BugHunterGame from '../components/BugHunterGame';
 import TechArtifactHuntGame from '../components/TechArtifactHuntGame';
 import Footer from '../components/Footer';
+import Loader from '../components/Loader';
 
 const Home = () => {
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        // Hide loader after 5 seconds to let the animations play out
+        const timer = setTimeout(() => {
+            setLoading(false);
+        }, 5000);
+
+        return () => clearTimeout(timer);
+    }, []);
+
     return (
-        <div className="relative w-full min-h-screen bg-[#050505]">
+        <>
+            <AnimatePresence>
+                {loading && <Loader />}
+            </AnimatePresence>
+
+            <div className={`relative w-full min-h-screen bg-[#050505] transition-opacity duration-1000 ${loading ? 'opacity-0 h-screen overflow-hidden' : 'opacity-100'}`}>
             {/* Background blobs for modern aesthetic wrapped to prevent overflow scroll */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
                 <div className="absolute top-0 left-[10%] w-[30rem] h-[30rem] bg-purple-500 rounded-full mix-blend-multiply filter blur-[128px] opacity-30 animate-blob"></div>
@@ -39,6 +57,7 @@ const Home = () => {
             <Footer />
             <TechArtifactHuntGame />
         </div>
+        </>
     );
 };
 

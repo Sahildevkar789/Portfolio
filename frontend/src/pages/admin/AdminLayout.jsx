@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import { Outlet, useNavigate, Link, useLocation } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
-import { LogOut, LayoutDashboard, TerminalSquare, User, FileText, Award, Phone, GraduationCap, BookOpen } from 'lucide-react';
+import { LogOut, LayoutDashboard, TerminalSquare, User, FileText, Award, Phone, GraduationCap, BookOpen, Briefcase } from 'lucide-react';
 
 const AdminLayout = () => {
     const { adminInfo, logout } = useContext(AuthContext);
@@ -26,6 +26,7 @@ const AdminLayout = () => {
         { path: '/admin/about', label: 'About', icon: <FileText className="w-4 h-4" /> },
         { path: '/admin/education', label: 'Education', icon: <GraduationCap className="w-4 h-4" /> },
         { path: '/admin/research', label: 'Research', icon: <BookOpen className="w-4 h-4" /> },
+        { path: '/admin/experience', label: 'Experience', icon: <Briefcase className="w-4 h-4" /> },
         { path: '/admin/skills', label: 'Skills', icon: <TerminalSquare className="w-4 h-4" /> },
         { path: '/admin/projects', label: 'Projects', icon: <LayoutDashboard className="w-4 h-4" /> },
         { path: '/admin/certifications', label: 'Certifications', icon: <Award className="w-4 h-4" /> },

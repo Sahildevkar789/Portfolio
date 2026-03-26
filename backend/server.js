@@ -17,6 +17,7 @@ import aboutRoutes from './routes/aboutRoutes.js';
 import contactInfoRoutes from './routes/contactInfoRoutes.js';
 import educationRoutes from './routes/educationRoutes.js';
 import researchRoutes from './routes/researchRoutes.js';
+import experienceRoutes from './routes/experienceRoutes.js';
 
 const app = express();
 
@@ -34,6 +35,7 @@ app.use('/api/research', researchRoutes);
 app.use('/api/about', aboutRoutes);
 app.use('/api/contact-info', contactInfoRoutes);
 app.use('/api/education', educationRoutes);
+app.use('/api/experience', experienceRoutes);
 
 // Basic Route for testing
 app.get('/', (req, res) => {
