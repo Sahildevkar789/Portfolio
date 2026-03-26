@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { Terminal } from 'lucide-react';
+import { Terminal, Server, Cpu, Globe } from 'lucide-react';
 
-const Loader = () => {
+const Loader = ({ isBackendReady }) => {
     const [progress, setProgress] = useState(0);
+    const [statusMessage, setStatusMessage] = useState("Initializing Portfolio...");
+    const [showWakeupMessage, setShowWakeupMessage] = useState(false);
 
-    // Simulate progress bar filling up over 1.8 seconds
     useEffect(() => {
         const interval = setInterval(() => {
             setProgress((prev) => {
@@ -13,13 +14,49 @@ const Loader = () => {
                     clearInterval(interval);
                     return 100;
                 }
-                // Takes about 5 seconds to reach 100 at an average of 2% per 100ms
-                return prev + Math.floor(Math.random() * 3) + 1;
+                
+                // If backend is not ready, slow down progress significantly after 90%
+                if (!isBackendReady && prev >= 90) {
+                    return prev; 
+                }
+
+                // If backend is ready and we were stuck at 90+, jump to 100
+                if (isBackendReady && prev >= 90) {
+                    return prev + 2;
+                }
+
+                // Normal progress simulation
+                const increment = Math.floor(Math.random() * 3) + 1;
+                return prev + increment;
             });
         }, 100);
 
         return () => clearInterval(interval);
-    }, []);
+    }, [isBackendReady]);
+
+    // Handle status messages based on time and backend state
+    useEffect(() => {
+        const timer1 = setTimeout(() => setStatusMessage("Fetching Professional Data..."), 2000);
+        const timer2 = setTimeout(() => {
+            if (!isBackendReady) {
+                setStatusMessage("Waking up Render Server...");
+                setShowWakeupMessage(true);
+            }
+        }, 6000);
+        const timer3 = setTimeout(() => {
+            if (!isBackendReady) setStatusMessage("Almost there, server is spinning up...");
+        }, 15000);
+
+        if (isBackendReady && progress >= 90) {
+            setStatusMessage("Environment Ready!");
+        }
+
+        return () => {
+            clearTimeout(timer1);
+            clearTimeout(timer2);
+            clearTimeout(timer3);
+        };
+    }, [isBackendReady, progress]);
 
     return (
         <motion.div
@@ -77,7 +114,7 @@ const Loader = () => {
                         transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
                         className="bg-gradient-to-br from-purple-500/20 to-blue-500/20 p-4 rounded-full border border-purple-500/30 shadow-[0_0_30px_rgba(168,85,247,0.4)]"
                     >
-                        <Terminal className="w-8 h-8 text-white" />
+                        {isBackendReady ? <Terminal className="w-8 h-8 text-white" /> : <Server className="w-8 h-8 text-purple-400" />}
                     </motion.div>
                 </div>
 
@@ -92,27 +129,36 @@ const Loader = () => {
                 </motion.h1>
 
                 <motion.div 
-                    animate={{ opacity: [0.5, 1, 0.5] }}
-                    transition={{ duration: 1.5, repeat: Infinity }}
-                    className="text-purple-400 text-sm font-mono font-bold uppercase tracking-[0.2em] mb-8 relative"
+                    key={statusMessage}
+                    initial={{ opacity: 0, y: 5 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="text-purple-400 text-sm font-mono font-bold uppercase tracking-[0.2em] mb-8 text-center"
                 >
-                    Initializing Portfolio...
+                    {statusMessage}
+                    {!isBackendReady && showWakeupMessage && (
+                        <div className="text-[10px] text-gray-500 mt-2 lowercase font-normal italic tracking-normal">
+                             Note: Render free tier takes ~30s to spin up from sleep
+                        </div>
+                    )}
                 </motion.div>
 
                 {/* Progress Bar Container */}
                 <div className="w-full relative">
                     <div className="flex justify-between text-[10px] text-gray-500 font-mono font-bold uppercase tracking-wider mb-2">
-                        <span>Loading AI-Powered Experience</span>
+                        <span className="flex items-center gap-1">
+                            {isBackendReady ? <Cpu className="w-3 h-3" /> : <Globe className="w-3 h-3 animate-pulse" />}
+                            {isBackendReady ? "Core Systems Online" : "Connecting to Cloud..."}
+                        </span>
                         <span className="text-blue-400 w-8 text-right">{Math.min(progress, 100)}%</span>
                     </div>
                     
                     {/* The Track */}
-                    <div className="h-1 w-full bg-white/10 rounded-full overflow-hidden backdrop-blur-sm relative">
+                    <div className="h-1 w-full bg-white/10 rounded-full overflow-hidden backdrop-blur-sm relative border border-white/5">
                         {/* The Fill */}
                         <motion.div 
                             className="absolute top-0 left-0 h-full bg-gradient-to-r from-purple-500 via-blue-500 to-cyan-400"
                             animate={{ width: `${Math.min(progress, 100)}%` }}
-                            transition={{ ease: "easeOut", duration: 0.2 }}
+                            transition={{ ease: "linear", duration: 0.5 }}
                         >
                             {/* Moving shine on the bar */}
                             <motion.div 
