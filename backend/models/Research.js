@@ -36,6 +36,19 @@ const researchSchema = mongoose.Schema(
         citation: {
             type: String,
             default: 'Devkar, S. S. "AI-Powered QR Code Scam Detector for Phishing and Malicious Link Detection".'
+        },
+        year: {
+            type: String,
+            default: '2026'
+        },
+        domain: {
+            type: String,
+            default: 'Cybersecurity & AI'
+        },
+        impact: {
+            views: { type: String, default: '0' },
+            downloads: { type: String, default: '0' },
+            citations: { type: String, default: '0' }
         }
     },
     {

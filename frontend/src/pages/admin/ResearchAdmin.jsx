@@ -191,6 +191,69 @@ const ResearchAdmin = () => {
                         />
                     </div>
                 </div>
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label className="block text-gray-700 dark:text-gray-300 font-bold mb-2">Publication Year</label>
+                        <input
+                            type="text"
+                            name="year"
+                            value={researchData.year || ''}
+                            onChange={handleChange}
+                            disabled={!isEditing}
+                            placeholder="e.g. 2026"
+                            className="w-full px-4 py-2 border rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-50"
+                        />
+                    </div>
+                    <div>
+                        <label className="block text-gray-700 dark:text-gray-300 font-bold mb-2">Research Domain</label>
+                        <input
+                            type="text"
+                            name="domain"
+                            value={researchData.domain || ''}
+                            onChange={handleChange}
+                            disabled={!isEditing}
+                            placeholder="e.g. Cybersecurity & AI"
+                            className="w-full px-4 py-2 border rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-50"
+                        />
+                    </div>
+                </div>
+
+                <div className="bg-gray-50 dark:bg-gray-900 p-4 rounded-lg border border-gray-200 dark:border-gray-700">
+                    <h3 className="font-bold text-gray-800 dark:text-white mb-4 uppercase text-xs tracking-widest">Impact Metrics</h3>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div>
+                            <label className="block text-gray-600 dark:text-gray-400 text-xs font-bold mb-1">Views</label>
+                            <input
+                                type="text"
+                                value={researchData.impact?.views || ''}
+                                onChange={(e) => setResearchData({...researchData, impact: {...(researchData.impact || {}), views: e.target.value}})}
+                                disabled={!isEditing}
+                                className="w-full px-3 py-1.5 border rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white disabled:opacity-50"
+                            />
+                        </div>
+                        <div>
+                            <label className="block text-gray-600 dark:text-gray-400 text-xs font-bold mb-1">Downloads</label>
+                            <input
+                                type="text"
+                                value={researchData.impact?.downloads || ''}
+                                onChange={(e) => setResearchData({...researchData, impact: {...(researchData.impact || {}), downloads: e.target.value}})}
+                                disabled={!isEditing}
+                                className="w-full px-3 py-1.5 border rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white disabled:opacity-50"
+                            />
+                        </div>
+                        <div>
+                            <label className="block text-gray-600 dark:text-gray-400 text-xs font-bold mb-1">Citations</label>
+                            <input
+                                type="text"
+                                value={researchData.impact?.citations || ''}
+                                onChange={(e) => setResearchData({...researchData, impact: {...(researchData.impact || {}), citations: e.target.value}})}
+                                disabled={!isEditing}
+                                className="w-full px-3 py-1.5 border rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white disabled:opacity-50"
+                            />
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     );
