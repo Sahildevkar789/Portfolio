@@ -70,6 +70,15 @@ const seedDatabase = async () => {
         console.log('Seeding Projects...');
         const projectsData = [
             {
+                title: 'CyberShield – AI-Powered Cybersecurity Platform',
+                description: 'CyberShield is an AI-powered cybersecurity platform that combines machine learning and microservices to detect phishing websites, analyze password strength, scan network ports, and evaluate website security.',
+                technologies: ['Python', 'Machine Learning', 'React', 'Node.js', 'Microservices', 'Flask', 'Cybersecurity'],
+                image: '/projects/cybershield.png',
+                githubLink: 'https://github.com/Sahildevkar789',
+                liveLink: 'https://cyber-shield-rose.vercel.app/',
+                featured: true
+            },
+            {
                 title: 'AI-Based Deepfake & Malicious QR/URL Scam Detector',
                 description: 'Designed an AI-based system to detect deepfake images and malicious QR/URL scams to prevent fraud and phishing attacks. Features real-time scanning and uncertainty-aware risk scoring.',
                 technologies: ['Python', 'XGBoost', 'Machine Learning', 'OpenCV', 'Flask', 'Isotonic Regression'],
