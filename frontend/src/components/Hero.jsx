@@ -9,7 +9,7 @@ const Hero = () => {
         tagline: 'Turning Vision Into \n Digital Reality',
         intro: 'Full Stack Developer | Backend Specialist | Cloud & Cybersecurity Enthusiast.\nBuilding modern, scalable, and responsive web applications.',
         resumeLink: '/resume.pdf',
-        profileImage: '',
+        profileImage: '/profile.png',
         backgroundImage: ''
     });
 
