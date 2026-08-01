@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Download, Mail, ArrowRight, TerminalSquare, Code2 } from 'lucide-react';
 
 const Hero = () => {
@@ -27,6 +27,19 @@ const Hero = () => {
         fetchHero();
     }, []);
 
+    const [helloIndex, setHelloIndex] = useState(0);
+    const hellos = [
+        "Hello", "नमस्ते", "你好", "Hola", "Bonjour", "नमस्कार",
+        "નમસ્તે"
+    ];
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setHelloIndex((prev) => (prev + 1) % hellos.length);
+        }, 3000);
+        return () => clearInterval(interval);
+    }, []);
+
     // Split tagline by newline if user entered formatting
     const formattedTagline = heroData.tagline?.split('\n').map((line, i) => (
         <React.Fragment key={i}>
@@ -36,14 +49,19 @@ const Hero = () => {
     ));
 
     return (
-        <section id="home" className="min-h-screen flex items-center justify-center pt-20 pb-10 px-4 relative">
+        <section id="home" className="min-h-screen flex items-center justify-center pt-20 pb-10 px-4 relative overflow-hidden">
+            {/* Background Mesh Gradients */}
+            <div className="absolute top-0 left-0 w-full h-full bg-[#050505] -z-20" />
+            <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-purple-600/10 rounded-full blur-[120px] -z-10 animate-pulse" />
+            <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-blue-600/10 rounded-full blur-[120px] -z-10 animate-pulse" />
+
             {heroData.backgroundImage && (
-                <div 
-                    className="absolute inset-0 z-0 opacity-10 dark:opacity-20 bg-cover bg-center" 
+                <div
+                    className="absolute inset-0 z-0 opacity-10 dark:opacity-20 bg-cover bg-center"
                     style={{ backgroundImage: `url(${heroData.backgroundImage})` }}
                 ></div>
             )}
-            
+
             <div className="container mx-auto flex flex-col lg:flex-row items-center justify-between gap-12 z-10">
                 {/* Text Content */}
                 <motion.div
@@ -53,12 +71,31 @@ const Hero = () => {
                     transition={{ duration: 0.8 }}
                 >
                     <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 0.2, duration: 0.8 }}
-                        className="inline-block mb-4 px-4 py-1.5 rounded-full border border-gray-200 dark:border-gray-800 bg-white/50 dark:bg-black/50 backdrop-blur-sm text-sm font-medium"
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.5 }}
+                        className="inline-flex items-center gap-2 mb-8 px-5 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-xl shadow-[0_0_20px_rgba(168,85,247,0.15)] group"
                     >
-                        👋 Hello, I'm {heroData.name}
+                        <span className="flex items-center justify-center w-6 h-6 bg-purple-500/20 rounded-full text-xs">👋</span>
+                        <div className="flex items-center gap-1.5 overflow-hidden h-6 items-center">
+                            <AnimatePresence mode="wait">
+                                <motion.span
+                                    key={helloIndex}
+                                    initial={{ y: 20, opacity: 0 }}
+                                    animate={{ y: 0, opacity: 1 }}
+                                    exit={{ y: -20, opacity: 0 }}
+                                    transition={{ duration: 0.4, ease: "circOut" }}
+                                    className="text-white font-black tracking-wide"
+                                >
+                                    {hellos[helloIndex]}
+                                </motion.span>
+                            </AnimatePresence>
+                            <span className="text-gray-400 font-medium">, I'm</span>
+                        </div>
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-400 font-bold ml-1">
+                            {heroData.name || "Sahil Santosh Devkar"}
+                        </span>
+                        <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse ml-1" />
                     </motion.div>
 
                     <motion.h1
@@ -137,17 +174,17 @@ const Hero = () => {
                         </div>
 
                         {/* Profile Image - Floating & Big Cutout */}
-                        <motion.div 
+                        <motion.div
                             className="relative z-10 w-full h-full flex items-end justify-center drop-shadow-[0_0_30px_rgba(168,85,247,0.5)] cursor-pointer"
                             animate={{ y: [-10, 10, -10] }}
                             transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
                             whileHover={{ scale: 1.05 }}
                         >
                             {heroData.profileImage ? (
-                                <img 
-                                    src={heroData.profileImage} 
-                                    alt={heroData.name} 
-                                    className="w-[125%] h-[125%] max-w-none object-contain object-bottom drop-shadow-[0_20px_40px_rgba(0,0,0,0.8)]" 
+                                <img
+                                    src={heroData.profileImage}
+                                    alt={heroData.name}
+                                    className="w-[125%] h-[125%] max-w-none object-contain object-bottom drop-shadow-[0_20px_40px_rgba(0,0,0,0.8)]"
                                 />
                             ) : (
                                 <div className="w-64 h-64 md:w-80 md:h-80 flex flex-col items-center justify-center bg-black/40 backdrop-blur-xl rounded-full border border-white/10 shadow-[0_0_50px_rgba(168,85,247,0.3)]">
@@ -158,10 +195,10 @@ const Hero = () => {
                                 </div>
                             )}
                         </motion.div>
-                        
+
                         {/* Floating Tech Badges elements styling */}
-                        <motion.div 
-                            className="absolute top-10 -left-4 md:-left-10 bg-[#111]/80 backdrop-blur-md border border-white/10 p-3 rounded-2xl shadow-[0_0_20px_rgba(0,0,0,0.5)]" 
+                        <motion.div
+                            className="absolute top-10 -left-4 md:-left-10 bg-[#111]/80 backdrop-blur-md border border-white/10 p-3 rounded-2xl shadow-[0_0_20px_rgba(0,0,0,0.5)]"
                             animate={{ y: [-5, 5, -5] }}
                             transition={{ repeat: Infinity, duration: 4, ease: "easeInOut", delay: 1 }}
                         >
@@ -170,7 +207,7 @@ const Hero = () => {
                             </div>
                         </motion.div>
 
-                        <motion.div 
+                        <motion.div
                             className="absolute bottom-20 -right-4 md:-right-10 bg-[#111]/80 backdrop-blur-md border border-white/10 p-3 rounded-2xl shadow-[0_0_20px_rgba(0,0,0,0.5)]"
                             animate={{ y: [5, -5, 5] }}
                             transition={{ repeat: Infinity, duration: 5, ease: "easeInOut", delay: 2 }}

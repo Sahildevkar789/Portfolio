@@ -33,7 +33,7 @@ const Terminal = () => {
                     response = '1. Sports Turf Booking\\n2. Airbnb Clone\\n3. BharatMeet\\nType "view portfolio" from the GUI to see more detail.';
                     break;
                 case 'contact':
-                    response = 'Email: your-email@example.com \\nLinkedIn: linkedin.com/in/sahildevkar \\nGitHub: github.com/sahildevkar';
+                    response = 'Email: sahildevkar789@gmail.com \\nLinkedIn: linkedin.com/in/sahildevkar \\nGitHub: github.com/sahildevkar';
                     break;
                 case 'clear':
                     setHistory([]);

@@ -24,17 +24,17 @@ const ResearchPublication = () => {
                 console.error("Error fetching research data:", error);
                 // Fallback for demonstration if API fails
                 setResearchData({
-                    title: "AI-Powered QR Code Scam Detector for Phishing Detection",
-                    author: "Sahil Santosh Devkar",
-                    abstract: "This research presents a novel approach to detecting phishing attacks embedded within QR codes using machine learning and computer vision. By analyzing the structural patterns and destination URLs of QR codes, our system can identify malicious redirections with 98.4% accuracy, providing a critical layer of security for mobile users in the evolving threat landscape.",
-                    keywords: ["Cybersecurity", "AI Security", "QR Code Security", "Phishing Detection"],
-                    paperLink: "#",
-                    pdfLink: "#",
-                    githubLink: "#",
-                    citation: 'Devkar, S. S., "AI-Powered QR Code Scam Detector for Phishing Detection," IEEE International Conference on Cybersecurity 2026.',
+                    title: "An Uncertainty-Aware Cascaded Framework for Real-Time QR-Embedded URL Phishing Detection Under Deployment Constraints",
+                    author: "Sahil Santosh Devkar, Sanchit Devanand Gharat.",
+                    abstract: "This paper presents an uncertainty-aware cascaded framework for real-time detection of phishing URLs embedded in QR codes. The system combines a calibrated XGBoost classifier, a self-curating blacklist, and weighted forensic scoring to improve phishing detection while maintaining low latency. It introduces a deployment-aware analysis of the soft-fail recall tradeoff and proposes the SUSPICIOUS_UNVERIFIED state as a future mitigation strategy.",
+                    keywords: ["QR Code Security", "QR Phishing", "Quishing", "URL Phishing Detection", "Cybersecurity", "XGBoost", "Machine Learning", "Uncertainty Quantification", "Isotonic Regression", "Threat Intelligence", "Flask", "AI Security"],
+                    paperLink: "https://drive.google.com/file/d/1W6-yuXFElxJT2tffWROM9Ed-FZeVxJsk/view",
+                    pdfLink: "https://drive.google.com/file/d/1W6-yuXFElxJT2tffWROM9Ed-FZeVxJsk/view",
+                    githubLink: "https://drive.google.com/file/d/1W6-yuXFElxJT2tffWROM9Ed-FZeVxJsk/view",
+                    citation: "Devkar, S. S., Gharat, S. D., Gulve, M. S., Job, J., Bhatkar, M. U., & Praveena S. M. An Uncertainty-Aware Cascaded Framework for Real-Time QR-Embedded URL Phishing Detection Under Deployment Constraints",
                     year: "2026",
-                    domain: "Cybersecurity & AI",
-                    impact: { views: "1.2k", downloads: "450", citations: "12" }
+                    domain: "Cybersecurity, Artificial Intelligence, Machine Learning, QR Code Security",
+                    impact: { views: "1256", downloads: "21", citations: "12" }
                 });
             }
         };

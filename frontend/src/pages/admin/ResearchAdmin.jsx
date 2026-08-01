@@ -4,7 +4,7 @@ import { AuthContext } from '../../context/AuthContext';
 import { Edit2, Save, X } from 'lucide-react';
 
 const ResearchAdmin = () => {
-    const { auth } = useContext(AuthContext);
+    const { adminInfo } = useContext(AuthContext);
     const [researchData, setResearchData] = useState({
         title: '',
         author: '',
@@ -13,10 +13,15 @@ const ResearchAdmin = () => {
         paperLink: '',
         pdfLink: '',
         githubLink: '',
-        citation: ''
+        citation: '',
+        year: '',
+        domain: '',
+        impact: { views: '', downloads: '', citations: '' }
     });
     const [isEditing, setIsEditing] = useState(false);
     const [message, setMessage] = useState({ type: '', text: '' });
+
+    const API = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
 
     useEffect(() => {
         fetchResearch();
@@ -24,11 +29,16 @@ const ResearchAdmin = () => {
 
     const fetchResearch = async () => {
         try {
-            const { data } = await axios.get('/api/research');
-            if(data) {
+            const { data } = await axios.get(`${API}/research`);
+            if (data) {
                 setResearchData({
                     ...data,
-                    keywords: data.keywords ? data.keywords.join(', ') : ''
+                    keywords: Array.isArray(data.keywords) ? data.keywords.join(', ') : (data.keywords || ''),
+                    impact: {
+                        views: data.impact?.views ?? '',
+                        downloads: data.impact?.downloads ?? '',
+                        citations: data.impact?.citations ?? ''
+                    }
                 });
             }
         } catch (error) {
@@ -45,14 +55,29 @@ const ResearchAdmin = () => {
         try {
             const config = {
                 headers: {
-                    Authorization: `Bearer ${auth.token}`
+                    Authorization: `Bearer ${adminInfo?.token}`
                 }
             };
+            const keywordsArray = typeof researchData.keywords === 'string'
+                ? researchData.keywords.split(',').map(k => k.trim()).filter(Boolean)
+                : (Array.isArray(researchData.keywords) ? researchData.keywords : []);
+
             const payload = {
                 ...researchData,
-                keywords: researchData.keywords.split(',').map(k => k.trim()).filter(k => k)
+                keywords: keywordsArray
             };
-            await axios.put('/api/research', payload, config);
+            const { data } = await axios.put(`${API}/research`, payload, config);
+            if (data) {
+                setResearchData({
+                    ...data,
+                    keywords: Array.isArray(data.keywords) ? data.keywords.join(', ') : (data.keywords || ''),
+                    impact: {
+                        views: data.impact?.views ?? '',
+                        downloads: data.impact?.downloads ?? '',
+                        citations: data.impact?.citations ?? ''
+                    }
+                });
+            }
             setMessage({ type: 'success', text: 'Research updated successfully!' });
             setIsEditing(false);
             setTimeout(() => setMessage({ type: '', text: '' }), 3000);
