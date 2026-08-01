@@ -35,10 +35,10 @@ const seedDatabase = async () => {
 
         console.log('Seeding About...');
         await About.create({
-            bio: "Hi, I'm Sahil Santosh Devkar, a passionate B.Tech Computer Engineering Student based in Mumbai, India.\nMy journey in tech is driven by a strong desire to build impactful, scalable systems and intuitive user interfaces.\n\nI specialize in full-stack development with a strong focus on backend architecture. Beyond coding, I'm deeply interested in Cloud Computing, Cybersecurity, and AI.\nMy goal is to craft digital experiences that are not just functional, but exceptional.",
+            bio: "Hi, I'm Sahil Santosh Devkar, a passionate B.Tech Computer Engineering student based in Mumbai, India.\nMy journey in tech is driven by a strong desire to build impactful, scalable systems and intelligent applications.\n\nI specialize in full-stack development with a strong focus on backend architecture, cybersecurity, and machine learning. Beyond coding, I'm deeply interested in Cloud Computing, AI Security, and Robotics.",
             education: ["B.Tech Computer Engineering"],
-            goals: "Focusing on full-stack development, algorithms, system design, and cutting-edge software engineering practices.",
-            interests: ["Cloud Computing", "Web Development", "Backend Architecture", "Cybersecurity", "AI"]
+            goals: "Focusing on advanced full-stack systems, machine learning security models, cloud infrastructure, and building innovative tech solutions that prevent cyber fraud.",
+            interests: ["Full-Stack Development", "Cybersecurity", "Machine Learning", "Cloud Computing", "AI Security", "Robotics"]
         });
 
         console.log('Seeding Skills...');
