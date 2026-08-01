@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Download, Mail, ArrowRight, TerminalSquare, Code2 } from 'lucide-react';
+import profilePic from '../assets/profile.png';
 
 const Hero = () => {
     const [heroData, setHeroData] = useState({
@@ -180,20 +181,15 @@ const Hero = () => {
                             transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
                             whileHover={{ scale: 1.05 }}
                         >
-                            {heroData.profileImage ? (
-                                <img
-                                    src={heroData.profileImage}
-                                    alt={heroData.name}
-                                    className="w-[125%] h-[125%] max-w-none object-contain object-bottom drop-shadow-[0_20px_40px_rgba(0,0,0,0.8)]"
-                                />
-                            ) : (
-                                <div className="w-64 h-64 md:w-80 md:h-80 flex flex-col items-center justify-center bg-black/40 backdrop-blur-xl rounded-full border border-white/10 shadow-[0_0_50px_rgba(168,85,247,0.3)]">
-                                    <TerminalSquare className="w-24 h-24 text-purple-400 opacity-60 mb-6" />
-                                    <div className="bg-white/5 backdrop-blur-md px-4 py-2 rounded-full text-sm font-bold border border-white/10 text-purple-300">
-                                        &lt;Developer /&gt;
-                                    </div>
-                                </div>
-                            )}
+                            <img
+                                src={heroData.profileImage || profilePic}
+                                alt={heroData.name || "Sahil Santosh Devkar"}
+                                onError={(e) => {
+                                    e.currentTarget.onerror = null;
+                                    e.currentTarget.src = profilePic;
+                                }}
+                                className="w-full h-full max-h-[110%] object-contain object-bottom drop-shadow-[0_20px_40px_rgba(0,0,0,0.8)]"
+                            />
                         </motion.div>
 
                         {/* Floating Tech Badges elements styling */}
