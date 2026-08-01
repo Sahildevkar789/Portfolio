@@ -6,7 +6,6 @@ import {
     MapPin, Calendar, ChevronRight, Sparkles, Code2, Cloud,
     CheckCircle2
 } from 'lucide-react';
-import profilePic from '../assets/profile.png';
 
 const API = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
 
@@ -246,21 +245,12 @@ const About = () => {
                         className="flex flex-col gap-6"
                     >
                         {/* About Me card */}
-                        <div className="p-6 rounded-2xl border border-white/10 bg-white/5 flex flex-col md:flex-row gap-6 items-center">
-                            <div className="w-28 h-28 md:w-32 md:h-32 flex-shrink-0 rounded-2xl overflow-hidden border border-purple-500/30 bg-gradient-to-br from-purple-900/40 to-blue-900/40 p-1 shadow-[0_0_20px_rgba(168,85,247,0.2)]">
-                                <img 
-                                    src={profilePic} 
-                                    alt="Sahil Santosh Devkar" 
-                                    className="w-full h-full object-cover object-top rounded-xl"
-                                />
-                            </div>
-                            <div className="flex-1">
-                                <SectionBadge icon={<User size={16} />} label="About Me" />
-                                <p className="text-gray-300 leading-relaxed whitespace-pre-line text-sm">
-                                    {aboutData.bio ||
-                                        `I'm a passionate Computer Engineering student specializing in full-stack development and cybersecurity. I love building impactful software and solving real-world security challenges.`}
-                                </p>
-                            </div>
+                        <div className="p-6 rounded-2xl border border-white/10 bg-white/5">
+                            <SectionBadge icon={<User size={16} />} label="About Me" />
+                            <p className="text-gray-300 leading-relaxed whitespace-pre-line text-sm">
+                                {aboutData.bio ||
+                                    `I'm a passionate Computer Engineering student specializing in full-stack development and cybersecurity. I love building impactful software and solving real-world security challenges.`}
+                            </p>
                         </div>
 
                         {/* Career Goals card */}
