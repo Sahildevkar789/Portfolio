@@ -70,38 +70,47 @@ const seedDatabase = async () => {
         console.log('Seeding Projects...');
         const projectsData = [
             {
-                title: 'Sports Turf Booking System (MERN)',
-                description: 'A full-stack application for booking sports turfs. Includes user authentication, real-time availability checking, and admin management dashbaord.',
-                technologies: ['React', 'Node.js', 'Express', 'MongoDB'],
+                title: 'AI-Based Deepfake & Malicious QR/URL Scam Detector',
+                description: 'Designed an AI-based system to detect deepfake images and malicious QR/URL scams to prevent fraud and phishing attacks. Features real-time scanning and uncertainty-aware risk scoring.',
+                technologies: ['Python', 'XGBoost', 'Machine Learning', 'OpenCV', 'Flask', 'Isotonic Regression'],
                 image: 'default.jpg',
-                githubLink: '#',
+                githubLink: 'https://github.com/Sahildevkar789',
+                liveLink: 'https://drive.google.com/file/d/1W6-yuXFElxJT2tffWROM9Ed-FZeVxJsk/view',
+                featured: true
+            },
+            {
+                title: 'Sports Solutions - A Training and Reservation System',
+                description: 'Developed a web and mobile application for real-time sports facility booking and management. Supports user authentication, slot reservation, and admin dashboard.',
+                technologies: ['React', 'Node.js', 'Express', 'MongoDB', 'React Native'],
+                image: 'default.jpg',
+                githubLink: 'https://github.com/Sahildevkar789',
                 liveLink: '#',
                 featured: true
             },
             {
-                title: 'Airbnb Clone',
-                description: 'A responsive clone of Airbnb with property listings, map integration, and mock booking functionality.',
-                technologies: ['React', 'Tailwind CSS', 'Firebase'],
+                title: 'Signature Verification System (Machine Learning)',
+                description: 'Built a machine learning-based system to verify handwritten signatures and detect forged signatures. Implemented image preprocessing and feature extraction for accurate signature matching and validation.',
+                technologies: ['Python', 'Machine Learning', 'OpenCV', 'CNN', 'TensorFlow'],
                 image: 'default.jpg',
-                githubLink: '#',
+                githubLink: 'https://github.com/Sahildevkar789',
                 liveLink: '#',
                 featured: true
             },
             {
-                title: 'BharatMeet Website',
-                description: 'A video conferencing web application allowing users to create rooms and join meetings seamlessly.',
-                technologies: ['React', 'WebRTC', 'Socket.io', 'Node.js'],
+                title: 'BharatMeet – Video Conferencing Application',
+                description: 'A real-time video meeting platform with user authentication and session management features. Enabled live communication and collaboration through integrated chat and video functionality.',
+                technologies: ['React', 'WebRTC', 'Socket.io', 'Node.js', 'Express'],
                 image: 'default.jpg',
-                githubLink: '#',
+                githubLink: 'https://github.com/Sahildevkar789',
                 liveLink: '#',
                 featured: false
             },
             {
-                title: 'Weather App',
-                description: 'A dynamic weather application using third-party APIs to fetch real-time weather data for any city.',
-                technologies: ['React', 'OpenWeather API', 'CSS'],
+                title: 'Smart Fire Detection and Extinguishing Robot',
+                description: 'Designed and developed an autonomous fire detection and suppression robot that detects flames, navigates to the source, and automatically extinguishes the fire using a water-spraying mechanism.',
+                technologies: ['Arduino/Raspberry Pi', 'Sensors', 'Robotics', 'Embedded C++', 'Computer Vision'],
                 image: 'default.jpg',
-                githubLink: '#',
+                githubLink: 'https://github.com/Sahildevkar789',
                 liveLink: '#',
                 featured: false
             }
@@ -110,12 +119,55 @@ const seedDatabase = async () => {
 
         console.log('Seeding Certifications...');
         const certsData = [
-            { title: 'Meta Back-End Developer Professional Certificate', organization: 'Coursera (Meta)', date: '2025', certificateImage: '', certificateLink: '#' },
-            { title: 'Programming in Python', organization: 'Coursera (Meta)', date: '2024', certificateImage: '', certificateLink: '#' },
-            { title: 'APIs and Web Services', organization: 'Coursera (Meta)', date: '2024', certificateImage: '', certificateLink: '#' },
-            { title: 'Django Web Framework', organization: 'Coursera (Meta)', date: '2024', certificateImage: '', certificateLink: '#' },
-            { title: 'Version Control with Git', organization: 'Coursera (Meta)', date: '2024', certificateImage: '', certificateLink: '#' },
-            { title: 'Database Development', organization: 'Coursera (Meta)', date: '2024', certificateImage: '', certificateLink: '#' }
+            {
+                title: 'Meta Back-End Developer Professional Certificate',
+                organization: 'Meta (Coursera)',
+                date: 'Aug 2024',
+                certificateImage: '',
+                certificateLink: '#'
+            },
+            {
+                title: 'Oracle Cloud Infrastructure 2025 Certified Cloud Architect Professional',
+                organization: 'Oracle Cloud',
+                date: '2025',
+                certificateImage: '',
+                certificateLink: '#'
+            },
+            {
+                title: 'Build for Bharat – Student Innovators Challenge',
+                organization: 'Build for Bharat / ONDC',
+                date: '2025',
+                certificateImage: '',
+                certificateLink: '#'
+            },
+            {
+                title: 'Snowstorm Hackathon – National Level Hackathon',
+                organization: 'National Level Hackathon',
+                date: '2025',
+                certificateImage: '',
+                certificateLink: '#'
+            },
+            {
+                title: 'Ethical Hacker',
+                organization: 'Cisco Networking Academy',
+                date: 'June 2025',
+                certificateImage: '',
+                certificateLink: '#'
+            },
+            {
+                title: 'Techsparks 2025 – Intercollegiate Project Presentation Competition',
+                organization: 'Intercollegiate Competition',
+                date: '2025',
+                certificateImage: '',
+                certificateLink: '#'
+            },
+            {
+                title: 'Full Stack Web Development (MERN)',
+                organization: 'Professional Certification',
+                date: 'January 2025',
+                certificateImage: '',
+                certificateLink: '#'
+            }
         ];
         await Certification.insertMany(certsData);
 
