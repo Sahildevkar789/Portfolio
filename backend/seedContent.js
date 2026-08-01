@@ -73,7 +73,7 @@ const seedDatabase = async () => {
                 title: 'AI-Based Deepfake & Malicious QR/URL Scam Detector',
                 description: 'Designed an AI-based system to detect deepfake images and malicious QR/URL scams to prevent fraud and phishing attacks. Features real-time scanning and uncertainty-aware risk scoring.',
                 technologies: ['Python', 'XGBoost', 'Machine Learning', 'OpenCV', 'Flask', 'Isotonic Regression'],
-                image: 'default.jpg',
+                image: '/projects/qr_scam_detector.png',
                 githubLink: 'https://github.com/Sahildevkar789',
                 liveLink: 'https://drive.google.com/file/d/1W6-yuXFElxJT2tffWROM9Ed-FZeVxJsk/view',
                 featured: true
@@ -82,7 +82,7 @@ const seedDatabase = async () => {
                 title: 'Sports Solutions - A Training and Reservation System',
                 description: 'Developed a web and mobile application for real-time sports facility booking and management. Supports user authentication, slot reservation, and admin dashboard.',
                 technologies: ['React', 'Node.js', 'Express', 'MongoDB', 'React Native'],
-                image: 'default.jpg',
+                image: '/projects/sports_solutions.png',
                 githubLink: 'https://github.com/Sahildevkar789',
                 liveLink: '#',
                 featured: true
@@ -91,7 +91,7 @@ const seedDatabase = async () => {
                 title: 'Signature Verification System (Machine Learning)',
                 description: 'Built a machine learning-based system to verify handwritten signatures and detect forged signatures. Implemented image preprocessing and feature extraction for accurate signature matching and validation.',
                 technologies: ['Python', 'Machine Learning', 'OpenCV', 'CNN', 'TensorFlow'],
-                image: 'default.jpg',
+                image: '/projects/signature_verifier.png',
                 githubLink: 'https://github.com/Sahildevkar789',
                 liveLink: '#',
                 featured: true
@@ -100,7 +100,7 @@ const seedDatabase = async () => {
                 title: 'BharatMeet – Video Conferencing Application',
                 description: 'A real-time video meeting platform with user authentication and session management features. Enabled live communication and collaboration through integrated chat and video functionality.',
                 technologies: ['React', 'WebRTC', 'Socket.io', 'Node.js', 'Express'],
-                image: 'default.jpg',
+                image: '/projects/bharat_meet.png',
                 githubLink: 'https://github.com/Sahildevkar789',
                 liveLink: '#',
                 featured: false
@@ -109,7 +109,7 @@ const seedDatabase = async () => {
                 title: 'Smart Fire Detection and Extinguishing Robot',
                 description: 'Designed and developed an autonomous fire detection and suppression robot that detects flames, navigates to the source, and automatically extinguishes the fire using a water-spraying mechanism.',
                 technologies: ['Arduino/Raspberry Pi', 'Sensors', 'Robotics', 'Embedded C++', 'Computer Vision'],
-                image: 'default.jpg',
+                image: '/projects/fire_robot.png',
                 githubLink: 'https://github.com/Sahildevkar789',
                 liveLink: '#',
                 featured: false
